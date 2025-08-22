@@ -1,0 +1,9 @@
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  background: #444;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 200px;
+}

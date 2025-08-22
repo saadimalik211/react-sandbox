@@ -1,0 +1,31 @@
+.pdf-tile {
+  user-select: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pdf-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-tile--grid {
+  aspect-ratio: 1 / 1;
+  background: #666;
+  border-radius: 8px;
+}
+
+.pdf-tile--panel {
+  padding: 1rem;
+  background: #555;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.pdf-tile--panel:last-child {
+  margin-bottom: 0;
+}
