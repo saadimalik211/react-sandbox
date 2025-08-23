@@ -47,7 +47,7 @@ const App: React.FC = () => {
           onAssemble={assemblePDFs}
           isAssembling={isAssembling}
           assemblyProgress={assemblyProgress}
-          downloadUrl={downloadUrl}
+          downloadUrl={downloadUrl || undefined}
           onDownload={downloadAssembledPDF}
         />
       </DragDropContext>

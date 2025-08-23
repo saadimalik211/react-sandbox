@@ -122,7 +122,7 @@ export const usePDFManagement = () => {
       if (status.status === 'completed') {
         setIsAssembling(false);
         setAssemblyProgress(100);
-        setCurrentJobId(null);
+        // Keep currentJobId for potential future use, but we're using downloadUrl for download
         
         if (status.downloadUrl) {
           setDownloadUrl(status.downloadUrl);
@@ -142,14 +142,23 @@ export const usePDFManagement = () => {
   }, []);
 
   const downloadAssembledPDF = useCallback(async () => {
-    if (!currentJobId) {
+    if (!downloadUrl) {
       setError('No assembly job available for download');
       return;
     }
 
     try {
       setError(null);
-      const blob = await pdfService.downloadAssembledPDF(currentJobId);
+      
+      // Extract jobId from downloadUrl
+      const jobIdMatch = downloadUrl.match(/\/assemble\/([^/]+)\/download/);
+      if (!jobIdMatch) {
+        setError('Invalid download URL');
+        return;
+      }
+      
+      const jobId = jobIdMatch[1];
+      const blob = await pdfService.downloadAssembledPDF(jobId);
       
       // Create download link
       const url = URL.createObjectURL(blob);
@@ -164,7 +173,7 @@ export const usePDFManagement = () => {
       const apiError = err as APIError;
       setError(`Download failed: ${apiError.message}`);
     }
-  }, [currentJobId]);
+  }, [downloadUrl]);
 
   const clearError = useCallback(() => {
     setError(null);

@@ -1,8 +1,3 @@
-export interface PDFTile {
-  id: string;
-  name: string;
-}
-
 export interface DragResult {
   source: {
     droppableId: string;
@@ -90,4 +85,5 @@ export interface AssemblyPanelProps {
   isAssembling?: boolean;
   assemblyProgress?: number;
   downloadUrl?: string;
+  onDownload?: () => Promise<void>;
 }

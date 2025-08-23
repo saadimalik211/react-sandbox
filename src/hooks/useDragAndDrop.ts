@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
-import { PDFTile, DragResult } from '../types';
+import { PDFFile, DragResult } from '../types';
 import { handleDragEnd } from '../utils/dragHelpers';
 
-export const useDragAndDrop = (initialTiles: PDFTile[]) => {
-  const [tiles] = useState<PDFTile[]>(initialTiles);
-  const [assembled, setAssembled] = useState<PDFTile[]>([]);
+export const useDragAndDrop = (initialTiles: PDFFile[]) => {
+  const [tiles] = useState<PDFFile[]>(initialTiles);
+  const [assembled, setAssembled] = useState<PDFFile[]>([]);
 
   const onDragEnd = useCallback((result: DragResult) => {
     handleDragEnd(result, tiles, assembled, setAssembled);

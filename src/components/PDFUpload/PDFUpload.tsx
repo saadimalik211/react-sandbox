@@ -92,7 +92,10 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({ onUpload, isLoading = fals
           
           <button 
             className="pdf-upload__button"
-            onClick={() => document.querySelector('.pdf-upload__input')?.click()}
+            onClick={() => {
+              const input = document.querySelector('.pdf-upload__input') as HTMLInputElement;
+              input?.click();
+            }}
             disabled={isLoading}
           >
             {isLoading ? 'Uploading...' : 'Choose Files'}

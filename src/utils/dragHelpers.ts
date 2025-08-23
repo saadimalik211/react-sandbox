@@ -1,10 +1,10 @@
-import { DragResult, PDFTile } from '../types';
+import { DragResult, PDFFile } from '../types';
 
 export const handleDragEnd = (
   result: DragResult,
-  tiles: PDFTile[],
-  assembled: PDFTile[],
-  setAssembled: (assembled: PDFTile[]) => void
+  tiles: PDFFile[],
+  assembled: PDFFile[],
+  setAssembled: (assembled: PDFFile[]) => void
 ): void => {
   const { source, destination } = result;
   
